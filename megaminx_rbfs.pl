@@ -229,13 +229,6 @@ B0,B1,B2,B3,B4,B5,B6,B7,B8,B9,B10, %11
 Pi0,Pi1,Pi2,Pi3,Pi4,Pi5,Pi6,Pi7,Pi8,Pi9,Pi10 %12
 )).
 
-
-
-
-
-
-
-
 %Simulation Mov 5
 mov(h,
 megaminx(
@@ -272,9 +265,6 @@ B0,B1,B2,B3,B4,B5,B6,B7,B8,B9,B10, %11
 Pi0,R10,R1,R2,Pi4,Pi5,Pi6,Pi7,Pi8,Pi9,Pi10 %12
 %--***********--------------------------------
 )).
-
-
-
 
 %Simulation Mov 7
 mov(l,
@@ -313,9 +303,6 @@ Pi0,Pi1,Pi2,Pi3,Pi4,Pi5,Pi6,Gr5,Gr6,Gr7,Pi10 %12
 %---------------------------***********---------
 )).
 
-
-
-
 %Simulation Mov 8
 mov(gr,
 megaminx(
@@ -352,7 +339,6 @@ B0,B1,B2,B3,B4,B5,B6,B7,B8,B9,B10, %11
 Pi0,H2,Pi2,Pi3,Pi4,Pi5,Pi6,Pi7,Pi8,H10,H1 %12
 %---**-----------------------------******----
 )).
-
 
 %Simulation Mov 9
 mov(o,
@@ -391,7 +377,6 @@ B0,B1,B2,B3,B4,B5,B6,B7,B8,B9,B10, %11
 Pi0,Pi1,Pi2,Pi3,Pi4,Pi5,Pi6,Pi7,Pi8,Pi9,Pi10 %12
 )).
 
-
 %Simulation Mov 10
 mov(y,
 megaminx(
@@ -428,8 +413,6 @@ B0,B1,B2,B3,B4,B5,B6,L6,L7,L8,B10, %11
 %--------------------********---------
 Pi0,Pi1,Pi2,Pi3,Pi4,Pi5,Pi6,Pi7,Pi8,Pi9,Pi10 %12
 )).
-
-
 
 %Simulation Mov 12
 mov(pi,
@@ -502,204 +485,8 @@ move_sequence([],X,X).
 move_sequence([Move|Othermoves], X, Z) :-
   move(Move,X,Y),
   move_sequence(Othermoves,Y,Z).
-% ----------------------------------------------------------------------
-% strategy: solve the cube in stages
-% stages 1-4: put the upper slice edge pieces (two-colored) in place
-% stages 5-8: put the upper slice corner pieces (three-colored) in place
-% stage 9: turn the cube so that the 'F' face center and the upper
-% slice 'F' face pieces are on the same (front) face
-% stages 10-20: put the middle slice corner pieces (two-colored) in place
-% stages 21-24: form a one-color "cross" on the 'D' face with bottom slice
-% (two-colored) edge pieces
-% stages 25-27: put the bottom slice edge pieces (two-colored) in place
-% stage 28: put the bottom slice corner pieces in place
-%
-%
-% here are the cube goal states for each stage
-% ----------------------------------------------------------------------
-
-% checked on 3rd Jan 2021
-get_goal(1, megaminx(
-% 0 ,1   ,2   ,3   ,4   ,5   ,6   ,7   ,8   ,9   ,10  ,
-"G" ,_   ,_   ,_   ,_   ,_   ,"G" ,_   ,_   ,_   ,_   , %1 %Backside1
-"W" ,"W" ,_   ,"W" ,_   ,"W" ,_   ,"W" ,_   ,"W" ,_   , %2
-"Pr",_   ,_   ,_   ,_   ,_   ,_   ,"Pr",_   ,_   ,_   , %3 %Backside1
-_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   , %4
-_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   , %5
-"R" ,_   ,_   ,_   ,_   ,"R" ,_   ,_   ,_   ,_   ,_   , %6
-_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   , %7
-_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   , %8
-_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   , %9
-"Y" ,_   ,_   ,_   ,_   ,_   ,"Y" ,_   ,_   ,_   ,_   , %10
-"B" ,_   ,_   ,_   ,_   ,_   ,"B" ,_   ,_   ,_   ,_   , %11
-_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ) %12
-).
-
-get_goal(2,megaminx(
-% 0 ,1   ,2   ,3   ,4   ,5   ,6   ,7   ,8   ,9   ,10  ,
-"G" ,_   ,_   ,_   ,_   ,"G" ,"G" ,"G" ,_   ,_   ,_   , %1 %Backside1
-"W" ,"W" ,"W" ,"W" ,"W" ,"W" ,"W" ,"W" ,"W" ,"W" ,"W" , %2
-"Pr",_   ,_   ,_   ,_   ,_   ,"Pr","Pr","Pr",_   ,_   , %3 %Backside1
-_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   , %4
-_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   , %5
-"R" ,_   ,_   ,_   ,"R" ,"R" ,"R" ,_   ,_   ,_   ,_   , %6
-_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   , %7
-_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   , %8
-_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   , %9
-"Y" ,_   ,_   ,_   ,_   ,"Y" ,"Y" ,"Y" ,_   ,_   ,_   , %10
-"B" ,_   ,_   ,_   ,_   ,"B" ,"B" ,"B" ,_   ,_   ,_   , %11
-_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ) %12
-).
-
-get_goal(3,megaminx(
-% 0 ,1   ,2   ,3   ,4   ,5   ,6   ,7   ,8   ,9   ,10  ,
-"G" ,_   ,_   ,_   ,"G" ,"G" ,"G" ,"G" ,"G" ,_   ,_   , %1 %Backside1
-"W" ,"W" ,"W" ,"W" ,"W" ,"W" ,"W" ,"W" ,"W" ,"W" ,"W" , %2
-"Pr",_   ,_   ,_   ,_   ,"Pr","Pr","Pr","Pr","Pr",_   , %3 %Backside1
-_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   , %4
-_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   , %5
-"R" ,_   ,_   ,"R" ,"R" ,"R" ,"R" ,"R" ,_   ,_   ,_   , %6
-_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   , %7
-_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   , %8
-"O" ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   , %9
-"Y" ,_   ,_   ,_   ,"Y" ,"Y" ,"Y" ,"Y" ,"Y" ,_   ,_   , %10
-"B" ,_   ,_   ,_   ,"B" ,"B" ,"B" ,"B" ,"B" ,_   ,_   , %11
-_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ) %12
-).
-
-get_goal(4,megaminx(
-% 0 ,1   ,2   ,3   ,4   ,5   ,6   ,7   ,8   ,9   ,10  ,
-"G" ,_   ,"G" ,"G" ,"G" ,"G" ,"G" ,"G" ,"G" ,"G" ,"G" , %1 %Backside1
-"W" ,"W" ,"W" ,"W" ,"W" ,"W" ,"W" ,"W" ,"W" ,"W" ,"W" , %2
-"Pr","Pr",_   ,"Pr","Pr","Pr","Pr","Pr","Pr","Pr","Pr", %3 %Backside1
-"T" ,_   ,_   ,_   ,_   ,"T" ,"T" ,"T" ,_   ,_   ,_   , %4
-"H" ,_   ,_   ,_   ,_   ,"H" ,"H" ,"H" ,_   ,_   ,_   , %5
-"R" ,"R" ,"R" ,"R" ,"R" ,"R" ,"R" ,"R" ,"R" ,"R" ,_   ,  %6
-"L" ,_   ,_   ,_   ,_   ,"L" ,"L" ,"L" ,_   ,_   ,_   , %7
-"Gr",_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   , %8
-"O" ,_   ,_   ,_   ,_   ,_   ,"O" ,"O" ,"O" ,_   ,_   , %9
-"Y" ,_   ,"Y" ,"Y" ,"Y" ,"Y" ,"Y" ,"Y" ,"Y" ,"Y" ,"Y" , %10
-"B" ,_   ,"B" ,"B" ,"B" ,"B" ,"B" ,"B" ,"B" ,"B" ,"B" , %11
-"Pi",_   ,_   ,_   ,"Pi","Pi","Pi",_   ,_   ,_   ,_   ) %12
-).
 
 
-get_goal(5,megaminx(
-% 0 ,1   ,2   ,3   ,4   ,5   ,6   ,7   ,8   ,9   ,10  ,
-"G" ,"G" ,"G" ,"G" ,"G" ,"G" ,"G" ,"G" ,"G" ,"G" ,"G" , %1
-"W" ,"W" ,"W" ,"W" ,"W" ,"W" ,"W" ,"W" ,"W" ,"W" ,"W" , %2
-"Pr","Pr","Pr","Pr","Pr","Pr","Pr","Pr","Pr","Pr","Pr", %3
-"T" ,_   ,_   ,_   ,"T" ,"T" ,"T" ,"T" ,"T" ,_   ,_   , %4 %Backside2
-"H" ,_   ,_   ,_   ,"H" ,"H" ,"H" ,"H" ,"H" ,_   ,_   , %5
-"R" ,"R" ,"R" ,"R" ,"R" ,"R" ,"R" ,"R" ,"R" ,"R" ,"R" ,  %6
-"L" ,_   ,_   ,_   ,"L" ,"L" ,"L" ,"L" ,"L" ,_   ,_   , %7
-"Gr",_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   , %8
-"O" ,_   ,_   ,_   ,_   ,"O" ,"O" ,"O" ,"O" ,"O" ,_   , %9 %Backside2
-"Y" ,"Y" ,"Y" ,"Y" ,"Y" ,"Y" ,"Y" ,"Y" ,"Y" ,"Y" ,"Y" , %10
-"B" ,"B" ,"B" ,"B" ,"B" ,"B" ,"B" ,"B" ,"B" ,"B" ,"B" , %11
-"Pi",_   ,_   ,"Pi","Pi","Pi","Pi","Pi",_   ,_   ,_   ) %12
-).
-
-get_goal(6,megaminx(
-% 0 ,1   ,2   ,3   ,4   ,5   ,6   ,7   ,8   ,9   ,10  ,
-"G" ,"G" ,"G" ,"G" ,"G" ,"G" ,"G" ,"G" ,"G" ,"G" ,"G" , %1
-"W" ,"W" ,"W" ,"W" ,"W" ,"W" ,"W" ,"W" ,"W" ,"W" ,"W" , %2
-"Pr","Pr","Pr","Pr","Pr","Pr","Pr","Pr","Pr","Pr","Pr", %3
-"T" ,_   ,_   ,"T" ,"T" ,"T" ,"T" ,"T" ,"T" ,"T" ,_   , %4 %Backside2
-"H" ,_   ,_   ,"H" ,"H" ,"H" ,"H" ,"H" ,"H" ,"H" ,_   , %5
-"R" ,"R" ,"R" ,"R" ,"R" ,"R" ,"R" ,"R" ,"R" ,"R" ,"R" ,  %6
-"L" ,_   ,_   ,"L" ,"L" ,"L" ,"L" ,"L" ,"L" ,"L" ,_   , %7
-"Gr",_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   ,_   , %8
-"O" ,_   ,_   ,_   ,"O" ,"O" ,"O" ,"O" ,"O" ,"O" ,"O" , %9 %Backside2
-"Y" ,"Y" ,"Y" ,"Y" ,"Y" ,"Y" ,"Y" ,"Y" ,"Y" ,"Y" ,"Y" , %10
-"B" ,"B" ,"B" ,"B" ,"B" ,"B" ,"B" ,"B" ,"B" ,"B" ,"B" , %11
-"Pi",_   ,"Pi","Pi","Pi","Pi","Pi","Pi","Pi",_   ,_   ) %12
-).
-
-get_goal(7,megaminx(
-% 0 ,1   ,2   ,3   ,4   ,5   ,6   ,7   ,8   ,9   ,10  ,
-"G" ,"G" ,"G" ,"G" ,"G" ,"G" ,"G" ,"G" ,"G" ,"G" ,"G" , %1
-"W" ,"W" ,"W" ,"W" ,"W" ,"W" ,"W" ,"W" ,"W" ,"W" ,"W" , %2
-"Pr","Pr","Pr","Pr","Pr","Pr","Pr","Pr","Pr","Pr","Pr", %3
-"T" ,_   ,_   ,"T" ,"T" ,"T" ,"T" ,"T" ,"T" ,"T" ,_   , %4 %Backside2
-"H" ,_   ,_   ,"H" ,"H" ,"H" ,"H" ,"H" ,"H" ,"H" ,_   , %5
-"R" ,"R" ,"R" ,"R" ,"R" ,"R" ,"R" ,"R" ,"R" ,"R" ,"R" ,  %6
-"L" ,_   ,_   ,"L" ,"L" ,"L" ,"L" ,"L" ,"L" ,"L" ,_   , %7
-"Gr",_   ,"Gr",_   ,"Gr",_   ,"Gr",_   ,"Gr",_   ,"Gr", %8
-"O" ,_   ,_   ,_   ,"O" ,"O" ,"O" ,"O" ,"O" ,"O" ,"O" , %9 %Backside2
-"Y" ,"Y" ,"Y" ,"Y" ,"Y" ,"Y" ,"Y" ,"Y" ,"Y" ,"Y" ,"Y" , %10
-"B" ,"B" ,"B" ,"B" ,"B" ,"B" ,"B" ,"B" ,"B" ,"B" ,"B" , %11
-"Pi",_   ,"Pi","Pi","Pi","Pi","Pi","Pi","Pi",_   ,_   ) %12
-).
-
-get_goal(8,megaminx(
-% 0 ,1   ,2   ,3   ,4   ,5   ,6   ,7   ,8   ,9   ,10  ,
-"G" ,"G" ,"G" ,"G" ,"G" ,"G" ,"G" ,"G" ,"G" ,"G" ,"G" , %1
-"W" ,"W" ,"W" ,"W" ,"W" ,"W" ,"W" ,"W" ,"W" ,"W" ,"W" , %2
-"Pr","Pr","Pr","Pr","Pr","Pr","Pr","Pr","Pr","Pr","Pr", %3
-"T" ,"T" ,_   ,"T" ,"T" ,"T" ,"T" ,"T" ,"T" ,"T" ,_   , %4 %Backside2
-"H" ,"H" ,_   ,"H" ,"H" ,"H" ,"H" ,"H" ,"H" ,"H" ,_   , %5
-"R" ,"R" ,"R" ,"R" ,"R" ,"R" ,"R" ,"R" ,"R" ,"R" ,"R" ,  %6
-"L" ,"L" ,_   ,"L" ,"L" ,"L" ,"L" ,"L" ,"L" ,"L" ,_   , %7
-"Gr",_   ,"Gr",_   ,"Gr",_   ,"Gr",_   ,"Gr",_   ,"Gr", %8
-"O" ,_   ,"O" ,_   ,"O" ,"O" ,"O" ,"O" ,"O" ,"O" ,"O" , %9 %Backside2
-"Y" ,"Y" ,"Y" ,"Y" ,"Y" ,"Y" ,"Y" ,"Y" ,"Y" ,"Y" ,"Y" , %10
-"B" ,"B" ,"B" ,"B" ,"B" ,"B" ,"B" ,"B" ,"B" ,"B" ,"B" , %11
-"Pi",_   ,"Pi","Pi","Pi","Pi","Pi","Pi","Pi",_   ,"Pi") %12
-).
-
-get_goal(9,megaminx(
-% 0 ,1   ,2   ,3   ,4   ,5   ,6   ,7   ,8   ,9   ,10  ,
-"G" ,"G" ,"G" ,"G" ,"G" ,"G" ,"G" ,"G" ,"G" ,"G" ,"G" , %1
-"W" ,"W" ,"W" ,"W" ,"W" ,"W" ,"W" ,"W" ,"W" ,"W" ,"W" , %2
-"Pr","Pr","Pr","Pr","Pr","Pr","Pr","Pr","Pr","Pr","Pr", %3
-"T" ,"T" ,_   ,"T" ,"T" ,"T" ,"T" ,"T" ,"T" ,"T" ,_   , %4 %Backside2
-"H" ,"H" ,_   ,"H" ,"H" ,"H" ,"H" ,"H" ,"H" ,"H" ,_   , %5
-"R" ,"R" ,"R" ,"R" ,"R" ,"R" ,"R" ,"R" ,"R" ,"R" ,"R" ,  %6
-"L" ,"L" ,_   ,"L" ,"L" ,"L" ,"L" ,"L" ,"L" ,"L" ,_   , %7
-"Gr","Gr","Gr","Gr","Gr","Gr","Gr","Gr","Gr","Gr","Gr", %8
-"O" ,_   ,"O" ,_   ,"O" ,"O" ,"O" ,"O" ,"O" ,"O" ,"O" , %9 %Backside2
-"Y" ,"Y" ,"Y" ,"Y" ,"Y" ,"Y" ,"Y" ,"Y" ,"Y" ,"Y" ,"Y" , %10
-"B" ,"B" ,"B" ,"B" ,"B" ,"B" ,"B" ,"B" ,"B" ,"B" ,"B" , %11
-"Pi",_   ,"Pi","Pi","Pi","Pi","Pi","Pi","Pi",_   ,"Pi") %12
-).
-
-get_goal(10,megaminx(
-% 0 ,1   ,2   ,3   ,4   ,5   ,6   ,7   ,8   ,9   ,10  ,
-"G" ,"G" ,"G" ,"G" ,"G" ,"G" ,"G" ,"G" ,"G" ,"G" ,"G" , %1
-"W" ,"W" ,"W" ,"W" ,"W" ,"W" ,"W" ,"W" ,"W" ,"W" ,"W" , %2
-"Pr","Pr","Pr","Pr","Pr","Pr","Pr","Pr","Pr","Pr","Pr", %3
-"T" ,"T" ,"T" ,"T" ,"T" ,"T" ,"T" ,"T" ,"T" ,"T" ,"T" , %4 %Backside2
-"H" ,"H" ,"H" ,"H" ,"H" ,"H" ,"H" ,"H" ,"H" ,"H" ,"H" , %5
-"R" ,"R" ,"R" ,"R" ,"R" ,"R" ,"R" ,"R" ,"R" ,"R" ,"R" ,  %6
-"L" ,"L" ,"L" ,"L" ,"L" ,"L" ,"L" ,"L" ,"L" ,"L" ,"L" , %7
-"Gr","Gr","Gr","Gr","Gr","Gr","Gr","Gr","Gr","Gr","Gr", %8
-"O" ,"O" ,"O" ,"O" ,"O" ,"O" ,"O" ,"O" ,"O" ,"O" ,"O" , %9 %Backside2
-"Y" ,"Y" ,"Y" ,"Y" ,"Y" ,"Y" ,"Y" ,"Y" ,"Y" ,"Y" ,"Y" , %10
-"B" ,"B" ,"B" ,"B" ,"B" ,"B" ,"B" ,"B" ,"B" ,"B" ,"B" , %11
-"Pi","Pi","Pi","Pi","Pi","Pi","Pi","Pi","Pi","Pi","Pi") %12
-).
-
-% --------------------------------------------------------------
-% the search space is narrowed by listing all allowed rotations
-% for each stage separately
-% --------------------------------------------------------------
-and(1, [g, w, pr, t, h, r, pi, l, gr, o, y, b]).
-and(2, [g, w, pr, t, h, r, pi, l, gr, o, y, b]).
-and(3, [g, w, pr, t, h, r, pi, l, gr, o, y, b]).
-and(4, [g, w, pr, t, h, r, pi, l, gr, o, y, b]).
-and(5, [g, w, pr, t, h, r, pi, l, gr, o, y, b]).
-and(6, [g, w, pr, t, h, r, pi, l, gr, o, y, b]).
-and(7, [g, w, pr, t, h, r, pi, l, gr, o, y, b]).
-and(8, [g, w, pr, t, h, r, pi, l, gr, o, y, b]).
-and(9, [g, w, pr, t, h, r, pi, l, gr, o, y, b]).
-and(10, [g, w, pr, t, h, r, pi, l, gr, o, y, b]).
-
-
-% catch a candidate move from the list for each stage
-get_candidate(Stage, Move) :-
-  and(Stage, Movelist),
-  nth1(_,Movelist,Move).
 % --------------------------------------------------------------
 % these helpers reject some unwise move candidates
 % check whether the proposed move should be tried or not

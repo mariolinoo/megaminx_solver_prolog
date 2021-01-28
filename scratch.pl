@@ -1,0 +1,13 @@
+cube(
+    'weiss','weiss','weiss','weiss','weiss','weiss','weiss','weiss','weiss','weiss',
+    'dgruen','dgruen','dgruen','dgruen','dgruen','dgruen','dgruen','dgruen','dgruen','dgruen','dgruen',
+    'violett','violett','violett','violett','violett','violett','violett','violett','violett','violett','violett',
+    'rot','rot','rot','rot','rot','rot','rot','rot','rot','rot','rot',
+    'hblau','hblau','hblau','hblau','hblau','hblau','hblau','hblau','hblau','hblau','hblau',
+    'braun','braun','braun','braun','braun','braun','braun','braun','braun','braun','braun',
+    'grau','grau','grau','grau','grau','grau','grau','grau','grau','grau','grau',
+    'hgruen','hgruen','hgruen','hgruen','hgruen','hgruen','hgruen','hgruen','hgruen','hgruen','hgruen',
+    'orange','orange','orange','orange','orange','orange','orange','orange','orange','orange','orange',
+    'rosa','rosa','rosa','rosa','rosa','rosa','rosa','rosa','rosa','rosa','rosa',
+    'gelb','gelb','gelb','gelb','gelb','gelb','gelb','gelb','gelb','gelb','gelb',
+    'dblau','dblau','dblau','dblau','dblau','dblau','dblau','dblau','dblau','dblau','dblau')
