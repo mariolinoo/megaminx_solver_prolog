@@ -11,7 +11,7 @@ cand(2,  [u, l, f, r, dl, dr, r_v, r_ud, sp1]).
 cand(3,  [u, l, f, r, dl, dr, r_v, r_ud, sp1]).
 cand(4,  [u, l, f, r, dl, dr, r_v, r_ud, sp1]).
 cand(5,  [u, l, f, r, dl, dr, r_v, r_ud, sp1]).
-cand(6,  [u, l, f, r, dl, dr, r_v, r_ud, sp1]).
+cand(6,  [u, r_v, sp1, dr, l, f, r, dl, r_ud]).
 cand(7,  [sp1]).
 cand(8,  [r_v]).
 cand(9,  [u, l, f, r, dl, dr, r_v, r_ud]).
@@ -50,16 +50,39 @@ cand(41, [u,c4, c5, l, r, f, r_v]).
 cand(42, [r_v]).
 cand(43, [f, l, r, u, r_v]).
 cand(44, [u,c1, c2, c3, l, r, f, r_v]).
-cand(45, [u,c4, c5, l, r, f, r_v]).
+cand(45, [r, c4, u, c5, l, r, f, r_v]).
 cand(46, [r_v]).
 cand(47, [f, l, r, u, r_v]).
-cand(48, [u,c1, c2, c3, l, r, f, r_v]).
+cand(48, [r_v, c3, f, l,u,c1, c2, r]).
 cand(49, [u,c4, c5, l, r, f, r_v]).
 cand(50, [r_v]).
 cand(51, [f, l, r, u, r_v]).
 cand(52, [f]).
-cand(53, [u,c1, c2, c3, l, r, f, r_v]).
+cand(53, [r_v, c2, u,c1, c3, l, r, f]).
 cand(54, [u,c4, c5, l, r, f, r_v]).
+cand(55, [u, c1, c2, c3, f, r_v]).
+cand(56, [r_v]).
+cand(57, [u, c1, c2, c3, f, r_v]).
+cand(58, [r_v]).
+cand(59, [u, c1, c2, c3, f, r_v]).
+cand(60, [r_v]).
+cand(61, [u, c1, c2, c3, f, r_v]).
+cand(62, [r_v]).
+cand(63, [u, c1, c2, c3, f, r_v]).
+cand(64, [u, c4, c5, r_v]).
+cand(65, [r_v]).
+cand(66, [u, c4, c5, r_v]).
+cand(67, [r_v]).
+cand(68, [u, c4, c5, r_v]).
+cand(69, [r_v]).
+cand(70, [u, c4, c5, r_v]).
+cand(71, [r_v]).
+cand(72, [u, c4, c5, r_v]).
+cand(73, [c6, u]).
+cand(74, [c7, u]).
+cand(75, [c8, u]).
+cand(76, [c9, u]).
+
 
 
 % catch a candidate move from the list for each stage
@@ -172,7 +195,7 @@ get_stage(Stage, Newstage) :-
 
 % the cube should be finished after stage 28, so we stop here.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-stage([],55,_). %%%%%%%%%%%%%%%%%%% change this for testing
+stage([],77,_). %%%%%%%%%%%%%%%%%%% change this for testing
                                 % example: 3 means go to goal 2
 % this builds the result move list by moving from stage to stage
 % and joining the solutions gathered for each stage

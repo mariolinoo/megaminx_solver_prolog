@@ -25,6 +25,18 @@ mov(c4, X, Y) :-
 mov(c5, X, Y) :-
   move_sequence([-r, -f, +r, +u, +r, -u, -r, -f], X, Y).
 
+mov(c6, X, Y) :-
+  move_sequence([+f, +r, +u, -r, -u, -f], X, Y).
+
+mov(c7, X, Y) :-
+  move_sequence([-r, -u, +r, -u, -r, +u, +u, +r], X, Y).
+
+mov(c8, X, Y) :-
+  move_sequence([+r, +u, -r, -u], X, Y).
+
+mov(c9, X, Y) :-
+  move_sequence([+r, +u, -r], X, Y).
+ 
 
 %%%%%%%%%%%%%%%%%%%%% UP %%%%%%%%%%%%%%%%%%%%%%%%%%%
 mov(u,
