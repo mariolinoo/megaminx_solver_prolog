@@ -12,10 +12,8 @@ statistics(walltime, [TimeSinceStart | [TimeSinceLastCall]]),
       nl,
       move_sequence(
         %Different test cases and an estimetated time to solve them
-        [+r, +u, +f, -r_v, +r, +u, +f, -r_v, +r, +u, +f, -r_v, +r, +u, +f, -r_v, -r_ud, +r, +u, +f, -r_v, +r, +u, +f, -r_v, +r, +u, +f, -r_v,
-         +r, -dr, +u, +f, -dl, +l, -r_v, +r_ud, -dr, +u, +f, +u, +f, -dl, +r],
         %2 min
-        %[+r_ud, +u, +f, -dl, +r, +u, +f, +u, +f, -dl, +r, -dr, +r_ud, +u, +f, -dl, +r, -dr, +u, +f],
+        [+r_ud, +u, +f, -dl, +r, +u, +f, +u, +f, -dl, +r, -dr, +r_ud, +u, +f, -dl, +r, -dr, +u, +f],
         %15min
         %[-dr, +u, +f, +u, +f, -dl, +r, -dr, +u, +f, +u, +f, -dl, +r, +r, -dr, +u], 
         %11min
