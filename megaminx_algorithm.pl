@@ -34,7 +34,7 @@ cand(17, [r_v]).
 cand(18, [u, l, f, r, dl, dr, r_v, r_ud, sp2]).
 cand(19, [sp1]).
 cand(20, [r_v]).
-cand(9999, [f]).
+
 %Stage 3
 cand(21, [u, l, f, r, dl, dr, r_v, r_ud, sp2]). 
 cand(22, [sp2]).
