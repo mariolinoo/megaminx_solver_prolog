@@ -36,16 +36,15 @@ cand(19, [sp1]).
 cand(20, [r_v]).
 
 %Stage 3
-cand(21, [u, l, f, r, dl, dr, r_v, r_ud, sp2]). %soll da sp2 auch dazu?
+cand(21, [u, l, f, r, dl, dr, r_v, r_ud, sp2]). 
 cand(22, [sp2]).
 cand(23, [r_v]).
-cand(24, [u, l, f, r, dl, dr, r_v, r_ud, sp2]). %soll da sp2 auch dazu?
+cand(24, [u, l, f, r, dl, dr, r_v, r_ud, sp2]). 
 cand(25, [sp2]).
 cand(26, [r_v]).
-cand(27, [u, l, f, r, dl, dr, r_v, r_ud, sp2]). %soll da sp2 auch dazu?
-cand(28, [sp2]).
+cand(27, [u, l, f, r, dl, dr, r_v, r_ud, sp2]). 
 cand(29, [r_v]).
-cand(30, [u, l, f, r, dl, dr, r_v, r_ud, sp2]). %soll da sp2 auch dazu?
+cand(30, [u, l, f, r, dl, dr, r_v, r_ud, sp2]). 
 cand(31, [sp2]).
 cand(32, [u, l, f, r, dl, dr, r_v, r_ud]).
 cand(33, [sp2]).
