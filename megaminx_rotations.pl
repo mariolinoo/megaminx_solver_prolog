@@ -10,6 +10,8 @@ mov(sp1,X,Y) :-
 mov(sp2,X,Y) :-
   move_sequence([+dl, +l, -dl, -l, -dl, -f, +dl, +f], X, Y).
 
+%Special moves according to https://www.gancube.com/megaminx-guide-of-gan
+
 mov(c1, X, Y) :-
   move_sequence([+u, +r, -u, r], X, Y).
 
@@ -151,7 +153,7 @@ T0  ,T1  ,T2  ,T3  ,T4  ,T5  ,T6  ,T7  ,T8  ,T9  ,T10 , %Back Down Left
 Gr0 ,Gr1 ,Gr2 ,Gr3 ,Gr4 ,Gr5 ,Gr6 ,Gr7 ,Gr8 ,Gr9 ,Gr10  %Down
 ),
 megaminx(
-W0  ,G3  ,W2  ,W3  ,W4  ,W5  ,W6  ,W7  ,W8  ,G1  ,G2  , %Up %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+W0  ,G3  ,W2  ,W3  ,W4  ,W5  ,W6  ,W7  ,W8  ,G1  ,G2  , %Up 
 %----*****------------------------------------*********
 G0  ,H1  ,H2  ,H3  ,G4  ,G5  ,G6  ,G7  ,G8  ,G9  ,G10 , %Left
 %----************-------------------------------------

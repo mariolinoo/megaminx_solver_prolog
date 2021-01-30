@@ -11,9 +11,18 @@ statistics(walltime, [TimeSinceStart | [TimeSinceLastCall]]),
       write("--------------------------Megaminx is being shuffled-------------------------------------"),
       nl,
       move_sequence(
+        %Different test cases and an estimetated time to solve them
+        %2 min
+        [+r_ud, +u, +f, -dl, +r, +u, +f, +u, +f, -dl, +r, -dr, +r_ud, +u, +f, -dl, +r, -dr, +u, +f],
+        %15min
+        %[-dr, +u, +f, +u, +f, -dl, +r, -dr, +u, +f, +u, +f, -dl, +r, +r, -dr, +u], 
+        %11min
+        %[-u, +l, -r_v, +r_ud, -dr, +u, +f, +u, +f, -dl, +r], 
+        %7min
         %[-u, +l, -r_v, +r_ud, +u, +f, -dl, +r, -dr, +u, +f, -dl,-r_v, -r_ud, -dr, +u, +f, +u, +f, -dl, +r, -dr, +f, -dl, +r, -dr, +u, +f], %NOTATION BZGL. ROTATIONEN EINHALTEN 
-        [-u, +l, -r_v, +r_ud, +u, +f, -dl, +r, -dr, +u, +f, -dl,-r_v, -r_ud, -dr, +u, +f, +u, +f, -dl, +r, -dr, +f, -dl, +r, -dr, +u, +f,
-          -u, +l, -r_v, +r_ud, +u, +f, -dl, +r, -dr, +u, +f, -dl,-r_v, -r_ud, -dr, +u, +f, +u, +f, -dl, +r, -dr, +f, -dl, +r, -dr, +u, +f ], %NOTATION BZGL. ROTATIONEN EINHALTEN 
+        %3min
+        %[-u, +l, -r_v, +r_ud, +u, +f, -dl, +r, -dr, +u, +f, -dl,-r_v, -r_ud, -dr, +u, +f, +u, +f, -dl, +r, -dr, +f, -dl, +r, -dr, +u, +f,
+        %  -u, +l, -r_v, +r_ud, +u, +f, -dl, +r, -dr, +u, +f, -dl,-r_v, -r_ud, -dr, +u, +f, +u, +f, -dl, +r, -dr, +f, -dl, +r, -dr, +u, +f ], %NOTATION BZGL. ROTATIONEN EINHALTEN 
         %NOTATION BZGL. NUMMERIERUNG FELDER EINHALTEN
         megaminx(
         "W" ,"W" ,"W" ,"W" ,"W" ,"W" ,"W" ,"W" ,"W" ,"W" ,"W" ,

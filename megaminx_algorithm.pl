@@ -6,40 +6,52 @@ set_prolog_stack(local,  limit(2 000 000 000)).
 % the search space is narrowed by listing all allowed rotations
 % for each stage separately
 % --------------------------------------------------------------
+
+
+%Stages from https://www.gancube.com/megaminx-guide-of-gan
+
+
+%Stage 1
 cand(1,  [u, l, f, r, dl, dr, r_v, r_ud, sp1]).
 cand(2,  [u, l, f, r, dl, dr, r_v, r_ud, sp1]).
 cand(3,  [u, l, f, r, dl, dr, r_v, r_ud, sp1]).
 cand(4,  [u, l, f, r, dl, dr, r_v, r_ud, sp1]).
 cand(5,  [u, l, f, r, dl, dr, r_v, r_ud, sp1]).
+
+%Stage 2
 cand(6,  [u, r_v, sp1, dr, l, f, r, dl, r_ud]).
 cand(7,  [sp1]).
 cand(8,  [r_v]).
-cand(9,  [u, l, f, r, dl, dr, r_v, r_ud]).
+cand(9,  [u, l, f, r, dl, dr, r_v, r_ud, sp2]).
 cand(10, [sp1]).
 cand(11, [r_v]).
-cand(12, [u, l, f, r, dl, dr, r_v, r_ud]).
+cand(12, [u, l, f, r, dl, dr, r_v, r_ud, sp2]).
 cand(13, [sp1]).
 cand(14, [r_v]).
-cand(15, [u, l, f, r, dl, dr, r_v, r_ud]).
+cand(15, [u, l, f, r, dl, dr, r_v, r_ud, sp2]).
 cand(16, [sp1]).
 cand(17, [r_v]).
-cand(18, [u, l, f, r, dl, dr, r_v, r_ud]).
+cand(18, [u, l, f, r, dl, dr, r_v, r_ud, sp2]).
 cand(19, [sp1]).
 cand(20, [r_v]).
-cand(21, [u, l, f, r, dl, dr, r_v, r_ud]). %soll da sp2 auch dazu?
+
+%Stage 3
+cand(21, [u, l, f, r, dl, dr, r_v, r_ud, sp2]). %soll da sp2 auch dazu?
 cand(22, [sp2]).
 cand(23, [r_v]).
-cand(24, [u, l, f, r, dl, dr, r_v, r_ud]). %soll da sp2 auch dazu?
+cand(24, [u, l, f, r, dl, dr, r_v, r_ud, sp2]). %soll da sp2 auch dazu?
 cand(25, [sp2]).
 cand(26, [r_v]).
-cand(27, [u, l, f, r, dl, dr, r_v, r_ud]). %soll da sp2 auch dazu?
+cand(27, [u, l, f, r, dl, dr, r_v, r_ud, sp2]). %soll da sp2 auch dazu?
 cand(28, [sp2]).
 cand(29, [r_v]).
-cand(30, [u, l, f, r, dl, dr, r_v, r_ud]). %soll da sp2 auch dazu?
+cand(30, [u, l, f, r, dl, dr, r_v, r_ud, sp2]). %soll da sp2 auch dazu?
 cand(31, [sp2]).
 cand(32, [u, l, f, r, dl, dr, r_v, r_ud]).
 cand(33, [sp2]).
 cand(34, [r_ud, r_v]).
+
+%Stage 4
 cand(35, [f, l, r, u, r_v]).
 cand(36, [u,c1, c2, c3, l, r, f, r_v]).
 cand(37, [u,c4, c5, l, r, f, r_v]).
@@ -60,6 +72,8 @@ cand(51, [f, l, r, u, r_v]).
 cand(52, [f]).
 cand(53, [r_v, c2, u,c1, c3, l, r, f]).
 cand(54, [u,c4, c5, l, r, f, r_v]).
+
+%Stage 5
 cand(55, [u, c1, c2, c3, f, r_v]).
 cand(56, [r_v]).
 cand(57, [u, c1, c2, c3, f, r_v]).
@@ -69,6 +83,8 @@ cand(60, [r_v]).
 cand(61, [u, c1, c2, c3, f, r_v]).
 cand(62, [r_v]).
 cand(63, [u, c1, c2, c3, f, r_v]).
+
+%Stage 6
 cand(64, [u, c4, c5, r_v]).
 cand(65, [r_v]).
 cand(66, [u, c4, c5, r_v]).
@@ -78,9 +94,17 @@ cand(69, [r_v]).
 cand(70, [u, c4, c5, r_v]).
 cand(71, [r_v]).
 cand(72, [u, c4, c5, r_v]).
+
+%Stage 7
 cand(73, [c6, u]).
+
+%Stage 8
 cand(74, [c7, u]).
+
+%Stage 9
 cand(75, [c8, u]).
+
+%Stage 10
 cand(76, [c9, u]).
 
 
@@ -133,10 +157,6 @@ megaminx(
   write("-------"),
   nl,
   flush_output.
-
-% step 5 Top star
-% red = front face - left
-% TODO %%%%%%%%%%%%%%%%%%%%%%%
 
 % --------------------------------------------------------------
 % these helpers call the actual rotations
@@ -193,10 +213,8 @@ get_move(Stage, -Move, State, Stagegoal) :-
 get_stage(Stage, Newstage) :-
   Newstage is Stage + 1.
 
-% the cube should be finished after stage 28, so we stop here.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-stage([],77,_). %%%%%%%%%%%%%%%%%%% change this for testing
-                                % example: 3 means go to goal 2
+% the cube should be finished after stage 76, so we stop here.
+stage([],77,_).                           
 % this builds the result move list by moving from stage to stage
 % and joining the solutions gathered for each stage
 stage(Movelist,Currentstage,Cubestate) :-
