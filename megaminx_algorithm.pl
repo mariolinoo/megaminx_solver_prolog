@@ -19,7 +19,7 @@ cand(4,  [u, l, f, r, dl, dr, r_v, r_ud, sp1]).
 cand(5,  [u, l, f, r, dl, dr, r_v, r_ud, sp1]).
 
 %Stage 2
-cand(6,  [u, r_v, sp1, dr, l, f, r, dl, r_ud]).
+cand(6,  [u, l, f, r, dl, dr, r_v, r_ud, sp1]).
 cand(7,  [sp1]).
 cand(8,  [r_v]).
 cand(9,  [u, l, f, r, dl, dr, r_v, r_ud, sp2]).
@@ -62,15 +62,15 @@ cand(41, [u,c4, c5, l, r, f, r_v]).
 cand(42, [r_v]).
 cand(43, [f, l, r, u, r_v]).
 cand(44, [u,c1, c2, c3, l, r, f, r_v]).
-cand(45, [r, c4, u, c5, l, r, f, r_v]).
+cand(45, [u,c4, c5, l, r, f, r_v]).
 cand(46, [r_v]).
 cand(47, [f, l, r, u, r_v]).
-cand(48, [r_v, c3, f, l,u,c1, c2, r]).
+cand(48, [c1, c2, c3, l, r, f, r_v]).
 cand(49, [u,c4, c5, l, r, f, r_v]).
 cand(50, [r_v]).
 cand(51, [f, l, r, u, r_v]).
 cand(52, [f]).
-cand(53, [r_v, c2, u,c1, c3, l, r, f]).
+cand(53, [u,c1, c2, c3, l, r, f, r_v]).
 cand(54, [u,c4, c5, l, r, f, r_v]).
 
 %Stage 5
